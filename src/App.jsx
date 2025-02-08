@@ -5,9 +5,11 @@ import { MoviesPage } from './MoviesPage.jsx'
 
 
 function App() {
-const movies = "placeholder";
   return (
-<MoviesPage />
+    <div>
+    <MoviesPage />
+    </div>
+
   )
 }
 

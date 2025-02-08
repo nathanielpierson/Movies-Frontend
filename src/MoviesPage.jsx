@@ -1,6 +1,7 @@
 import { MoviesIndex } from './MoviesIndex.jsx'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { Modal } from "./Modal";
 
 export function MoviesPage () {
   const [movies, setMovies] = useState([]);
@@ -21,6 +22,9 @@ export function MoviesPage () {
   setIsMovieShowVisible(true);
   };
 return (
+  <div>
 <MoviesIndex movies={movies} onShow={handleShow} />
+  <Modal show={isMoviesShowVisable} />
+  </div>
 )
 }
