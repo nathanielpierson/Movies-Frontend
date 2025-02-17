@@ -1,16 +1,19 @@
-
-import './App.css'
-import { Header } from './Header.jsx'
-import { MoviesPage } from './MoviesPage.jsx'
-
+import { Footer } from './Footer';
+import { Header } from './Header';
+import { MoviesPage } from './MoviesPage';
 
 function App() {
   return (
     <div>
-    <MoviesPage />
+      <Header />
+      <div className="container">
+        <MoviesPage />
+      </div>
+      <Footer />
+      
+        
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
