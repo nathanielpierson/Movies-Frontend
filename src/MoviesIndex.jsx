@@ -1,9 +1,9 @@
 export function MoviesIndex({ movies, onShow }) {
-  console.log(recipes);
+  console.log(movies);
   
   return (
     <div id="movies-index">
-      <h1>All recipes</h1>
+      <h1>All movies</h1>
       <div className="row">
         {movies.map(movie => (
           <div key={movie.id} className="col-md-4">

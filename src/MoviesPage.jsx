@@ -64,8 +64,7 @@ export function MoviesPage() {
     console.log('handling detroy...')
     axios.delete(`http://localhost:3000/movies/${movie.id}.json`).then(response => {
       console.log(response.data);      
-      // loop through the array of recipes, delete the one with the id of recipe.id
-      setMovies(recipes.filter(r => r.id !== recipe.id))
+      setMovies(recipes.filter(r => r.id !== movie.id))
       setIsMoviesShowVisible(false)
 
     })
@@ -79,7 +78,7 @@ export function MoviesPage() {
       <MoviesNew onCreate={handleCreate} />
       <MoviesIndex movies={movies} onShow={handleShow} />
       <Modal show={isMoviesShowVisible} onClose={closeModal}>
-        <MoviesShow recipe={currentMovie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
+        <MoviesShow movie={currentMovie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
       </Modal>
     </div>
   );
