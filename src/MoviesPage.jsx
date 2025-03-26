@@ -15,7 +15,7 @@ export function MoviesPage() {
     // get data from rails
     // with a web request
     // Make a request for a user with a given ID
-    axios.get("/movies").then(function (response) {
+    axios.get("/movies.json").then(function (response) {
       // handle success
       console.log("inside the .then");
       console.log(response.data);
