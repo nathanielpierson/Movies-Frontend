@@ -9,13 +9,17 @@ export function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [isMoviesShowVisible, setIsMovieShowVisible] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
+  const response = (axios.defaults.baseURL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:3000"
+      : "https://movie-api-xb6t.onrender.com");
 
   const handleIndex = () => {
     console.log("doing something...");
     // get data from rails
     // with a web request
     // Make a request for a user with a given ID
-    axios.get("http://localhost:3000/movies.json").then(function (response) {
+    axios.get(response).then(function (response) {
       // handle success
       console.log("inside the .then");
       console.log(response.data);
