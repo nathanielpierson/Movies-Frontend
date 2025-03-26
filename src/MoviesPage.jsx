@@ -9,17 +9,13 @@ export function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [isMoviesShowVisible, setIsMovieShowVisible] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
-  const response = (axios.defaults.baseURL =
-    import.meta.env.MODE === "development"
-      ? "http://localhost:3000"
-      : "https://movie-api-xb6t.onrender.com");
 
   const handleIndex = () => {
     console.log("doing something...");
     // get data from rails
     // with a web request
     // Make a request for a user with a given ID
-    axios.get(response).then(function (response) {
+    axios.get("/movies").then(function (response) {
       // handle success
       console.log("inside the .then");
       console.log(response.data);
@@ -53,29 +49,25 @@ export function MoviesPage() {
 
   const handleUpdate = (params, movie) => {
     console.log("hanlding update");
-    axios
-      .patch(`http://localhost:3000/movies/${movie.id}.json`, params)
-      .then((response) => {
-        console.log(response.data);
-        setIsMovieShowVisible(false);
-        // loop through movies array
-        // find the recipe i want to update
-        // swap out the current values for response.data
-        setMovies(
-          movies.map((r) => (r.id === response.data.id ? response.data : r))
-        );
-      });
+    axios.patch(`/movies/${movie.id}.json`, params).then((response) => {
+      console.log(response.data);
+      setIsMovieShowVisible(false);
+      // loop through movies array
+      // find the recipe i want to update
+      // swap out the current values for response.data
+      setMovies(
+        movies.map((r) => (r.id === response.data.id ? response.data : r))
+      );
+    });
   };
 
   const handleDestroy = (movie) => {
     console.log("handling detroy...");
-    axios
-      .delete(`http://localhost:3000/movies/${movie.id}.json`)
-      .then((response) => {
-        console.log(response.data);
-        setMovies(movies.filter((r) => r.id !== movie.id));
-        setIsMovieShowVisible(false);
-      });
+    axios.delete(`/movies/${movie.id}.json`).then((response) => {
+      console.log(response.data);
+      setMovies(movies.filter((r) => r.id !== movie.id));
+      setIsMovieShowVisible(false);
+    });
   };
 
   useEffect(handleIndex, []);
